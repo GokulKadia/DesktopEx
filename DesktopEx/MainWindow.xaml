@@ -1,0 +1,77 @@
+﻿<Window x:Class="DesktopEx.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopEx"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"              
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Name="mainwin">
+
+    <Window.Resources>
+        <ObjectDataProvider x:Key="enumValues"
+   MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:ExampleEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+
+    <Grid>
+        <!--<syncfusion:ColorPickerPalette Color="Red"
+                               Name="colorPicker" 
+                               Width="60"
+                               Height="40" >
+        </syncfusion:ColorPickerPalette>-->
+
+
+        <syncfusion:ColorPicker Name="colorPicker" Height="55" Width="180" ColorChanged="colorPicker_ColorChanged"/>
+
+
+
+        <Button Name="Apply" RenderTransformOrigin="0.514,0.584" Margin="330,304,334,85" Content="Apply Wallpaper" Click="ApplyWallpaper"/>
+
+        <Button x:Name = "button" Content = "Apply Color"
+         HorizontalAlignment = "Left" Margin = "194,304,0,0"
+         VerticalAlignment = "Top" Width = "108" Click="ApplyCol" Height="45" RenderTransformOrigin="0.43,5.284"/>
+
+
+        <StackPanel x:Name="mainWindow" Height="450" Width="800" Margin="20,0,-10,-16">
+            <TextBox Width="300" Name="Browse_TextBox"
+                                     HorizontalAlignment="Center"
+                                     Height="25"
+                                     VerticalContentAlignment="Center"                     
+                                      />
+            <Button  BorderThickness="0"
+                                                                
+                                 FontSize="16"
+                                 Height="25"
+                                 FontWeight="Regular"
+                                 Foreground="Black"
+                                 Width="100"
+                                 Grid.Column="2"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center"
+                                 Content="Browse"
+                                 Margin="5 6 0 0"
+                                 Command="{Binding BrowseALMApp}" 
+                     Background="#E4E4E4" Click="Browse_Button_Click"/>
+            <ComboBox Width="250" Height="25" Name="cmbStyle"
+                  Margin="20,15,0,0" ItemsSource="{Binding Source={StaticResource enumValues}}"/>
+
+
+        </StackPanel>
+        
+
+
+
+    </Grid>
+
+
+
+
+
+
+</Window>
